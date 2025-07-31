@@ -23,12 +23,7 @@ exports.getById = async (req, res) => {
 exports.create = async (req, res) => {
   try {
     const user = await User.create(req.body);
-    const d = {
-      "reqbody" : req.body,
-      "user" : user
-      
-    }
-    res.status(201).json(d);
+    res.status(201).json(user);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

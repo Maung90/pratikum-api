@@ -4,8 +4,8 @@ module.exports = (sequelize, DataTypes) => {
     totalPrice: DataTypes.INTEGER,
   });
   Transaction.associate = (models) => {
-    Transaction.belongsTo(models.User);
-    Transaction.belongsTo(models.Product);
+    // Transaction.belongsTo(models.User);
+    // Transaction.belongsTo(models.Product);
   };
   return Transaction;
 };
