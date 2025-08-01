@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const axios = require('axios');
 
-const PRODUCT_SERVICE = process.env.PRODUCT_SERVICE || 'http://localhost:3002/products';
+const PRODUCT_SERVICE = process.env.PRODUCT_SERVICE || 'http://localhost:3002/api/products';
 
 router.get('/:id', async (req, res) => {
   try {

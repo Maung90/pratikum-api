@@ -1,7 +1,10 @@
-const axios = require('axios');
-require('dotenv').config();
+const db = require('../models');
+const User = db.User;
 
 exports.getUserById = async (id) => {
-  const response = await axios.get(`${process.env.USER_SERVICE_URL}/${id}`);
-  return response.data;
+  const user = await User.findByPk(id);
+  if (!user) {
+    throw new Error('User not found');
+  }
+  return user;
 };

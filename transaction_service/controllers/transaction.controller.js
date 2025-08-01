@@ -2,6 +2,8 @@ const db = require('../models');
 const Transaction = db.Transaction;
 const userService = require('../services/user.service');
 const productService = require('../services/product.service');
+const axios = require('axios');
+
 
 exports.getAll = async (req, res) => {
   try {
@@ -25,8 +27,7 @@ exports.getById = async (req, res) => {
 exports.create = async (req, res) => {
   try {
     const { userId, productId, quantity } = req.body;
-
-    // Panggil user_service & product_service
+        
     const user = await userService.getUserById(userId);
     const product = await productService.getProductById(productId);
 
@@ -42,6 +43,11 @@ exports.create = async (req, res) => {
       quantity,
       totalPrice
     });
+    
+    await axios.post("http://localhost:4005/events", {
+          type: "TransactionsCreated",
+          data: { userId, productId, quantity } ,
+        });
 
     res.status(201).json(transaction);
   } catch (err) {

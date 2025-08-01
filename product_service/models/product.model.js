@@ -4,8 +4,5 @@ module.exports = (sequelize, DataTypes) => {
     price: DataTypes.INTEGER,
     stock: DataTypes.INTEGER,
   });
-  Product.associate = (models) => {
-    // Product.hasMany(models.Transaction);
-  };
   return Product;
 };

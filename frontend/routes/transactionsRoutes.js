@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const axios = require('axios');
 
-const TRANSACTION_SERVICE = process.env.TRANSACTION_SERVICE || 'http://localhost:3003/transactions';
+const TRANSACTION_SERVICE = process.env.TRANSACTION_SERVICE || 'http://localhost:3003/api/transactions';
 
 router.get('/', async (req, res) => {
   try {

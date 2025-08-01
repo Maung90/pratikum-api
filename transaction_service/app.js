@@ -3,6 +3,7 @@ const sequelize = require('./config/db');
 const db = require('./models');
 const cors = require('cors');
 const transactionRoutes = require('./routes/transaction.route');
+const eventRoutes = require('./routes/event.route');
 
 
 const app = express();
@@ -12,6 +13,7 @@ app.use(express.json());
 app.get('/', (req, res) => res.send('API Transaction Aktif!'));
 
 app.use('/api/transactions', transactionRoutes);
+app.use('/api/events', eventRoutes);
 
 
 // Koneksi ke database
