@@ -3,6 +3,7 @@ const sequelize = require('./config/db');
 const db = require('./models');
 const cors = require('cors');
 const productRoutes = require('./routes/product.route');
+const eventRoutes = require('./routes/event.route');
 
 
 const app = express();
@@ -12,6 +13,7 @@ app.use(express.json());
 app.get('/', (req, res) => res.send('API Product aktif!'));
 
 app.use('/api/products', productRoutes);
+app.use('/api/events', eventRoutes);
 
 // Koneksi ke database
 sequelize.authenticate()
