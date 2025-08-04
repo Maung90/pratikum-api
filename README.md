@@ -18,8 +18,8 @@ Proyek ini merupakan repositori yang digunakan untuk belajar memahami tentang ko
 ### 1. Clone Proyek
 
 ```bash
-git clone https://github.com/maung90/pratikum-api.git
-cd pratikum-api
+git clone https://github.com/maung90/microservice.git
+cd microservice
 ````
 
 ### 2. Install Dependencies
