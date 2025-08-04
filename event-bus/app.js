@@ -1,31 +1,21 @@
-const express = require('express');
+const express = require('express'); 
 const axios = require('axios');
 
 const app = express();
 
 app.use(express.json());
 
-app.post('/events', async (req, res) => {
-  const event = req.body;
+app.post('/events', (req, res) =>{
+  const event = req.body;  
+  axios.post('http://localhost:3001/api/events', event); //user
+  axios.post('http://localhost:3002/api/events', event); // product
+  axios.post('http://localhost:3003/api/events', event); // transaksi
+  axios.post('http://localhost:3009/api/events', event); // transaksi list
 
-  const services = [
-    'http://localhost:3001/api/events',
-    'http://localhost:3002/api/events',
-    'http://localhost:3003/api/events'
-  ];
-
-  await Promise.allSettled(
-    services.map(url => 
-      axios.post(url, event).catch(err => {
-        console.error(`❌ Gagal mengirim event ke ${url}:`, err.message);
-      })
-    )
-  );
-
-  res.send("Event submitted");
+    res.send("event submmited");
 });
 
 const port = 4005;
 app.listen(port, () => {
-  console.log(`Event bus running at http://localhost:${port}`);
+  console.log(`run on http://localhost:${port}`);
 });
